@@ -1,0 +1,34 @@
+## Beautiful score to STRINGS
+
+import numpy as np
+
+# coverting to lower case
+
+a=input('type the text here to calculate the score ')
+a=a.lower()
+
+# removing unwanted characters 
+import string
+for j in a:
+  if j in string.punctuation:
+    a=a.replace(j,"")
+    
+a=a.replace(" ","")
+#print(a)
+
+dic= {}
+
+for i in a:
+    if i in dic:
+      dic[i]=dic[i]+1
+    else:
+      dic[i]=1
+#print(dic)
+x = list(dic.values())
+x=sorted(x,reverse=True)
+#print(x)
+l=len(x)
+y = list(range(26,26-l,-1))
+#print(y)
+score = np.multiply(x,y).sum()
+print(score)
